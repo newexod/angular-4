@@ -8,21 +8,7 @@ import { Component } from '@angular/core';
 export class CarsComponent {
   carName = '';
   addCarStatus = false;
-  cars = ['Ford', 'BMW', 'Audi'];
-  users = [
-    {
-      id: 3,
-      name: 'Dima'
-    },
-    {
-      id: 6,
-      name: 'Yura'
-    },
-    {
-      id: 9,
-      name: 'Kolya'
-    }
-  ];
+  cars = ['Ford', 'BMW', 'Audi', 'Mazda', 'Lada', 'Bentley'];
   
   constructor() { // Функция, которая вызывается, когда класс CarsComponent будет инициализироваться
   }
@@ -31,5 +17,9 @@ export class CarsComponent {
     this.addCarStatus = true;
     this.cars.push(this.carName);
     this.carName = '';
+  }
+
+  setBigCarText(car: string) {
+    return car.length > 4 ? true : false;
   }
 }
