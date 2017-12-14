@@ -5,20 +5,12 @@
 <app-car></app-car>
 
 <hr>
-
-<!-- Передача данных из шаблона в компонент -->
-<!-- 1 вариант -->
-<!-- <input type="text" class="form-control" (input)="onKeyUp($event)"> -->
-
-<!-- 2 вариант -->
 <!-- 
-  Даём специальное имя: #myInp 
-  Это будет референция на элемент input, по которому мы можем обратиться
-  и передать его в функцию onKeyUp
-  и обратиться к его полю value
+  [] - получем какие-то данные из компонента в шаблон 
+  () - передаем какие-то данные из шаблона в компонент (вешаем события)
 -->
-<!-- <input type="text" class="form-control" #myInp (input)="onKeyUp(myInp.value)"> -->
-
-<!-- 3 вариант по клику Enter -->
 <input type="text" class="form-control" (keyup.enter)="onKeyUp($event)">
+
+<input type="text" class="form-control" [(ngModel)]="inputText">
+
 <p>{{ inputText }}</p>
