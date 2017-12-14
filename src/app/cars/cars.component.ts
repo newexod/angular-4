@@ -1,17 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  // selector: 'app-cars', // селектор по тегу
-  // selector: '[app-cars]', // селектор по аттрибуту
-  selector: '.app-cars', // селектор по классу
+  selector: 'app-cars',
   templateUrl: './cars.component.html',
   styleUrls: ['./cars.component.css']
 })
-export class CarsComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
+export class CarsComponent {
+  canAddCar = false;
+  
+  constructor() { // Функция, которая вызывается, когда класс CarsComponent будет инициализироваться
+    setTimeout(() => {
+      this.canAddCar = true;
+    }, 4000);
   }
-
 }
