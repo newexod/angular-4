@@ -1,17 +1,15 @@
 <input type="text" class="form-control" [(ngModel)]="carName">
 <button class="btn btn-primary" (click)="addCar()" >Добавить машину</button>
-<!-- 
-  После условия !addCarStatus в *ngIf 
-  ключевое слово else
-  и дальше пишем название той референции, которой мы задавали определенному элементу 
--->
 <p *ngIf="!addCarStatus; else successStatus">Машина не добавлена</p>
-<!-- 
-  Референцию задаём #successStatus специальному компоненту ng-template
- -->
 <ng-template #successStatus>
   <p>Машина добавлена!</p>
 </ng-template>
 <hr>
-<app-car></app-car>
-<app-car></app-car>
+
+<app-car *ngFor="let car of cars"></app-car>
+
+<ul>
+  <li *ngFor="let user of users; let idx = index">
+    <b>{{ idx + 1 }}</b> - <i>{{ user.name }}</i>
+  </li>
+</ul>
