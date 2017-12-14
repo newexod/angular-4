@@ -6,15 +6,22 @@
 </ng-template>
 <hr>
 
-<!-- <app-car *ngFor="let car of cars"></app-car> -->
-
+<!-- 
+  ПАЙПЫ - специальные трансформеры, которые можно использовать внутри HTML,
+  для трансформации каких либо данных, как мне необходимо
+-->
 <ul>
-  <li *ngFor="let car of cars; let idx = index">
-    <div 
-      [ngStyle]="{backgroundColor: (idx + 1) % 2 === 0 ? 'red' : 'green', 'color': 'white'}"
-      [ngClass]="{'big-text': setBigCarText(car)}"
-    >
-      <b>{{idx + 1}}</b> - {{car}}
+  <li *ngFor="let date of dates; let idx = index">
+    <div>
+      <!-- 
+        | означает, что дальше будет идти pipe, 
+        который будет трансформировать данную дату
+      -->
+      <b>{{idx + 1}}</b> - {{ date }} <br>
+      <b>{{idx + 1}}</b> - {{ date | date }} <br>
+      <b>{{idx + 1}}</b> - {{ date | date:'short' }} <br>
+      <b>{{idx + 1}}</b> - {{ date | date:'medium' }} <br>
+      <b>{{idx + 1}}</b> - {{ date | uppercase }}
     </div>
   </li>
 </ul>
