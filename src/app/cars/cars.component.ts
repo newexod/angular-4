@@ -6,17 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./cars.component.css']
 })
 export class CarsComponent {
-  addCarStatus = '';
-  inputText = 'Default text';
+  carName = '';
+  addCarStatus = false;
   
   constructor() { // Функция, которая вызывается, когда класс CarsComponent будет инициализироваться
   }
 
   addCar() {
-    this.addCarStatus = 'Машина добавлена';
-  }
-
-  onKeyUp(event) {
-    this.inputText = event.target.value;
+    this.addCarStatus = true;
   }
 }

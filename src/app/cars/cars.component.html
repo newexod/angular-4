@@ -1,16 +1,17 @@
+<input type="text" class="form-control" [(ngModel)]="carName">
 <button class="btn btn-primary" (click)="addCar()" >Добавить машину</button>
-<p>{{ addCarStatus }}</p>
-<hr>
-<app-car></app-car>
-<app-car></app-car>
-
-<hr>
 <!-- 
-  [] - получем какие-то данные из компонента в шаблон 
-  () - передаем какие-то данные из шаблона в компонент (вешаем события)
+  После условия !addCarStatus в *ngIf 
+  ключевое слово else
+  и дальше пишем название той референции, которой мы задавали определенному элементу 
 -->
-<input type="text" class="form-control" (keyup.enter)="onKeyUp($event)">
-
-<input type="text" class="form-control" [(ngModel)]="inputText">
-
-<p>{{ inputText }}</p>
+<p *ngIf="!addCarStatus; else successStatus">Машина не добавлена</p>
+<!-- 
+  Референцию задаём #successStatus специальному компоненту ng-template
+ -->
+<ng-template #successStatus>
+  <p>Машина добавлена!</p>
+</ng-template>
+<hr>
+<app-car></app-car>
+<app-car></app-car>
