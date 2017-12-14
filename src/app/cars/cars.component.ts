@@ -6,11 +6,28 @@ import { Component } from '@angular/core';
   styleUrls: ['./cars.component.css']
 })
 export class CarsComponent {
-  canAddCar = false;
+  addCarStatus = '';
+  inputText = '';
   
   constructor() { // Функция, которая вызывается, когда класс CarsComponent будет инициализироваться
-    setTimeout(() => {
-      this.canAddCar = true;
-    }, 4000);
+  }
+
+  addCar() {
+    this.addCarStatus = 'Машина добавлена';
+  }
+
+  // 1 вариант
+  // onKeyUp(event: Event) {
+  //   this.inputText = (<HTMLInputElement>event.target).value;
+  // }
+
+  // 2 вариант
+  // onKeyUp(value) {
+  //   this.inputText = value;
+  // }
+
+  // 3 вариант по клику Enter
+  onKeyUp(event) {
+    this.inputText = event.target.value;
   }
 }
