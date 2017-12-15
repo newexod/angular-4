@@ -1,17 +1,9 @@
-<input type="text" class="form-control" [(ngModel)]="carName">
-<input type="text" class="form-control" [(ngModel)]="carYear">
-<button class="btn btn-primary" (click)="addCar()">Добавить машину</button>
+<!-- 
+  Хотим подписаться на ивэнт onAddCar и при его выполнении
+  будем вызывать метод updateCarList
+ -->
+<app-add-car (onAddCar)="updateCarList($event)"></app-add-car>
 
 <hr>
 
-<!-- 
-  1 способ с помощью байндинга [] 
-  В самом компоненте будем привязываться к какому-то свойству
-  и сам компонент будет отслеживать изменения данного свойства
-  и применять его внутри себя
--->
-<!-- 
-  [carItem] указываем название свойства, за которым будет наблюдать компонент, чтобы знать откуда брать данные
-  "car" передаём значение данного свойства, которое будет применяться
- -->
 <app-car *ngFor="let car of cars" [carItem]="car"></app-car>

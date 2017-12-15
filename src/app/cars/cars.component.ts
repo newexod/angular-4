@@ -7,15 +7,6 @@ import { Component } from '@angular/core';
 })
 export class CarsComponent {
 
-  carName = '';
-  carYear = 2017;
-
-  /*
-     массив cars, у которого тип массив [], 
-     где каждый из элементов массива должен быть объектом,
-     поле name должно быть строкой,
-     поле year должно быть числом
-  */
   cars: [{name: string, year: number}] = [
     {
       name: 'Ford',
@@ -32,13 +23,9 @@ export class CarsComponent {
   constructor() {
   }
 
-  addCar() {
-    this.cars.push({
-      name: this.carName,
-      year: this.carYear
-    });
-    this.carName = '';
-    this.carYear = 2017;
-  }
+  // ожидаем в метод updateCarList получить объект car
+  updateCarList(car: {name: string, year: number}) {
+    this.cars.push(car);
+  }  
 
 }
