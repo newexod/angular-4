@@ -1,27 +1,17 @@
 <input type="text" class="form-control" [(ngModel)]="carName">
-<button class="btn btn-primary" (click)="addCar()" >Добавить машину</button>
-<p *ngIf="!addCarStatus; else successStatus">Машина не добавлена</p>
-<ng-template #successStatus>
-  <p>Машина добавлена!</p>
-</ng-template>
+<input type="text" class="form-control" [(ngModel)]="carYear">
+<button class="btn btn-primary" (click)="addCar()">Добавить машину</button>
+
 <hr>
 
 <!-- 
-  ПАЙПЫ - специальные трансформеры, которые можно использовать внутри HTML,
-  для трансформации каких либо данных, как мне необходимо
+  1 способ с помощью байндинга [] 
+  В самом компоненте будем привязываться к какому-то свойству
+  и сам компонент будет отслеживать изменения данного свойства
+  и применять его внутри себя
 -->
-<ul>
-  <li *ngFor="let date of dates; let idx = index">
-    <div>
-      <!-- 
-        | означает, что дальше будет идти pipe, 
-        который будет трансформировать данную дату
-      -->
-      <b>{{idx + 1}}</b> - {{ date }} <br>
-      <b>{{idx + 1}}</b> - {{ date | date }} <br>
-      <b>{{idx + 1}}</b> - {{ date | date:'short' }} <br>
-      <b>{{idx + 1}}</b> - {{ date | date:'medium' }} <br>
-      <b>{{idx + 1}}</b> - {{ date | uppercase }}
-    </div>
-  </li>
-</ul>
+<!-- 
+  [carItem] указываем название свойства, за которым будет наблюдать компонент, чтобы знать откуда брать данные
+  "car" передаём значение данного свойства, которое будет применяться
+ -->
+<app-car *ngFor="let car of cars" [carItem]="car"></app-car>

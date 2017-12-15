@@ -6,22 +6,39 @@ import { Component } from '@angular/core';
   styleUrls: ['./cars.component.css']
 })
 export class CarsComponent {
+
   carName = '';
-  addCarStatus = false;
-  cars = ['Ford', 'BMW', 'Audi', 'Mazda', 'Lada', 'Bentley'];
-  dates = [
-    new Date(2015, 3, 4).toDateString(),
-    new Date(2011, 2, 5).toDateString(),
-    new Date(2017, 4, 6).toDateString(),
-    new Date(2000, 1, 7).toDateString()
+  carYear = 2017;
+
+  /*
+     массив cars, у которого тип массив [], 
+     где каждый из элементов массива должен быть объектом,
+     поле name должно быть строкой,
+     поле year должно быть числом
+  */
+  cars: [{name: string, year: number}] = [
+    {
+      name: 'Ford',
+      year: 2015
+    }, {
+      name: 'Mazda',
+      year: 2010
+    }, {
+      name: 'Audi',
+      year: 2017
+    }
   ];
-  
-  constructor() { // Функция, которая вызывается, когда класс CarsComponent будет инициализироваться
+
+  constructor() {
   }
 
   addCar() {
-    this.addCarStatus = true;
-    this.cars.push(this.carName);
+    this.cars.push({
+      name: this.carName,
+      year: this.carYear
+    });
     this.carName = '';
+    this.carYear = 2017;
   }
+
 }
