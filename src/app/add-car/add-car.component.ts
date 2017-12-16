@@ -8,9 +8,7 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 export class AddCarComponent implements OnInit {
   carName = '';
   carYear = 2017;
-  /*
-    Специальное поле, которое является EventEmitter-ом
-  */
+
   @Output('onAddCar') carEmitter = new EventEmitter<{name: string, year: number}>();
 
   constructor() { }
@@ -19,9 +17,6 @@ export class AddCarComponent implements OnInit {
   }
 
   addCar() {
-    /*
-      тут необходимо эмиттить новые значения
-    */
     this.carEmitter.emit({
       name: this.carName,
       year: this.carYear
