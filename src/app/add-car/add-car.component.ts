@@ -1,4 +1,11 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { 
+  Component, 
+  OnInit, 
+  EventEmitter, 
+  Output, 
+  ViewChild, 
+  ElementRef 
+} from '@angular/core';
 
 @Component({
   selector: 'app-add-car',
@@ -6,24 +13,42 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./add-car.component.css']
 })
 export class AddCarComponent implements OnInit {
-  carName = '';
-  carYear = 2017;
 
   @Output('onAddCar') carEmitter = new EventEmitter<{name: string, year: number}>();
+
+  // 2 СПОСОБ
+  @ViewChild('carYearInput') carYearInput: ElementRef; // обращаемся к референции 'carYearInput' и заносим её в переменную carYearInput, которая является типом ElementRef
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  addCar() {
+  // 1 СПОСОБ
+  // addCar(carNameElement: HTMLInputElement) {
+  //   console.dir(carNameElement.value); // <input _ngcontent-c2 class="form-control" type="text">
+
+  //   this.carEmitter.emit({
+  //     name: carNameElement.value,
+  //     year: this.carYear
+  //   });
+
+  //   carNameElement.value = '';
+  //   this.carYear = 2017;
+  // }
+
+
+  // 2 СПОСОБ
+  addCar(carNameElement: HTMLInputElement) {
+    console.log(this.carYearInput); // ElementRef - специальный ангуляр элемент у которого есть nativeElement, который является обычным html элементом (onclick, onfocus, value ...)
+
     this.carEmitter.emit({
-      name: this.carName,
-      year: this.carYear
+      name: carNameElement.value,
+      year: +this.carYearInput.nativeElement.value // + инкрементирует из строки в число
     });
 
-    this.carName = '';
-    this.carYear = 2017;
+    carNameElement.value = '';
+    this.carYearInput.nativeElement.value = 2017;
   }
 
 }

@@ -1,3 +1,20 @@
-<input type="text" class="form-control" [(ngModel)]="carName">
-<input type="text" class="form-control" [(ngModel)]="carYear">
-<button class="btn btn-primary" (click)="addCar()">Добавить машину</button>
+<!--  
+  ПОЛУЧЕНИЕ ДОСТУПА К HTML ЭЛЕМЕНТУ ИЗ КОМПОНЕНТА 
+  1 СПОСОБ:
+  Локальная референция к элементу
+  Знак # говорит ангуляру, что это будет локальная референция к элементу и мы можем получить к нему доступ
+  #carNameInput - локальное название данному элементу
+-->
+<input type="text" class="form-control" #carNameInput>
+<!-- 
+  ПОЛУЧЕНИЕ ЗНАЧЕНИЙ НЕ ИЗ ШАБЛОНА (НЕ ПРИ КАКОМ-ТО СОБЫТИИ), А ПРОГРАММНО
+  2 СПОСОБ:
+  Локальная референция к элементу
+  Знак # говорит ангуляру, что это будет локальная референция к элементу и мы можем получить к нему доступ
+  #carYearInput - локальное название данному элементу
+ -->
+<input type="text" class="form-control" #carYearInput>
+<!-- 
+  carNameInput передать параметром в addCar
+ -->
+<button class="btn btn-primary" (click)="addCar(carNameInput)">Добавить машину</button>
