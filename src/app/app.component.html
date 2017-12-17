@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-8 col-xs-offset-2">
-      <!-- Вставляем директиву appBackground -->
-      <h3 appBackground>{{ headerText  }}</h3>
+      <!-- hoverColor и defaultColor параметры, которые мы передаём в директиву -->
+      <h3 [appBackground]="'red'" [defaultColor]="'blue'">{{ headerText }}</h3>
     </div>
   </div>
 </div>
