@@ -1,26 +1,60 @@
-import { Directive, ElementRef, OnInit, Renderer2 } from '@angular/core';
+import { Directive, ElementRef, OnInit, Renderer2, HostListener, HostBinding } from '@angular/core';
 
 @Directive({
   selector: '[appBackground]',
 })
 
 export class BackgroundDirective implements OnInit {
-  // Renderer2 не устарел в отличии от Renderer
+  /*
+    'style.backgroundColor' - будет положена в переменную background
+  */
+  @HostBinding('style.backgroundColor') background: string;
+  @HostBinding('class') classStyle: string;
+
   constructor(private element: ElementRef, private renderer: Renderer2) {}
 
   ngOnInit() {
-    this.element.nativeElement.style.backgroundColor = 'red';
+    
+  }
 
-    /* 
-      Не всегда мы имеем доступ к DOM дереву (мобильное приложение, к примеру)
-      Таким образом там не будет nativeElement
-      На смену nativeElement приходит Renderer2
-      ХОРОШИМ ТОНОМ ЯВЛЯЕТСЯ ИСПОЛЬЗОВАНИЕ RENDERER!!!!
+  /* 
+    @HostListener - прослушка событий
+    'mouseevent' - ивэнт вхождения мыши на элемент
+    ['$event'] - принимает данный ивэнт
+    mouseEnter - название метода, который будет выполняться (callback)
+  */
+  @HostListener('mouseenter', ['$event']) mouseEnter(event: Event) {
+    console.log(event); // MouseEvent
+
+    // 2 ВАРИАНТ 
+    this.background = 'lightblue';
+    this.classStyle = 'white-text';
+
+    /*
+      1 ВАРИАНТ
+      const {nativeElement} = this.element;
+      this.renderer.setStyle(nativeElement, 'background-color', 'lightblue');
+      this.renderer.addClass(nativeElement, 'white-text');
     */
-    const {nativeElement} = this.element;
-    this.renderer.setStyle(nativeElement, 'background-color', 'lightblue');
+  }
 
-    // берется из app.component.css
-    this.renderer.addClass(nativeElement, 'white-text')
+  /*
+    mouseleave - ивэнт выхода мыши из элемента
+  */
+  @HostListener('mouseleave', ['$event']) mouseLeave(event: Event) {
+    console.log(event); // MouseEvent
+
+    // 2 ВАРИАНТ
+    this.background = 'transparent';
+    this.classStyle = 'black-text';
+
+    /*
+      1 ВАРИАНТ
+      const {nativeElement} = this.element;
+      this.renderer.setStyle(nativeElement, 'background-color', 'transparent');
+      this.renderer.removeClass(nativeElement, 'white-text');
+    */
   }
 }
+
+// изменение директив при событии
