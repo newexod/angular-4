@@ -4,12 +4,15 @@
 
 <hr>
 
-<!-- 
-  ПЕРЕДАЧА РАЗЛИЧНЫХ ДАННЫХ В КОМПОНЕНТ 
--->
+<!-- Пример измения компонента, чтобы сработал жизненный этап OnChanges -->
+<button class="btn btn-success" (click)="changeCarName()">Изменить имя машины</button>
+<!-- Пример измения компонента, чтобы сработал жизненный этап OnDestroy -->
+<button class="btn btn-danger" (click)="deleteCar()">Удалить машину</button>
+
+<hr>
+
 <div class="list-group">
-  <app-car class="list-group-item" *ngFor="let car of cars" [carItem]="car">
-    <!-- ПОЛУЧЕНИЕ ЛОКАЛЬНОЙ РЕФЕРЕНЦИИ К ЭЛЕМЕНТУ -->
+  <app-car class="list-group-item" *ngFor="let car of cars" [carItem]="car" [nameOfTheCar]="car.name">
     <h4 #carHeading class="list-group-item-heading">Название: {{ car.name }}</h4>
     <p class="list-group-item-text">Год: {{ car.year }}</p>
   </app-car>
