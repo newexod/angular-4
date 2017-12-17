@@ -15,4 +15,11 @@ export class AppComponent {
     {name: 'Mercedes', description: 'WFW 5'},
     {name: 'BMW', description: 'WFW 6'},
   ];
+
+  addCar() {
+    this.cars.push({
+      name: 'New Car',
+      description: 'WFM'
+    })
+  }
 }
