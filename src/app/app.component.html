@@ -1,8 +1,21 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-8 col-xs-offset-2">
-      <!-- hoverColor и defaultColor параметры, которые мы передаём в директиву -->
       <h3 [appBackground]="'red'" [defaultColor]="'blue'">{{ headerText }}</h3>
+
+      <ul class="list-group">
+        <li *ngFor="let number of numbers" (click)="onClick(number)" class="list-group-item">
+          {{ number }}
+        </li>
+      </ul>
+
+      <!-- [ngSwitch] следит за изменениями переменной current -->
+      <div [ngSwitch]="current">
+        <p *ngSwitchCase="1">1</p>
+        <p *ngSwitchCase="2">2</p>
+        <p *ngSwitchCase="3">3</p>
+        <p *ngSwitchDefault>default</p>
+      </div>
     </div>
   </div>
 </div>

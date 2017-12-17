@@ -1,4 +1,3 @@
-// ПЕРЕДАЧА ПАРАМЕТРОВ ВНУТРЬ ДИРЕКТИВЫ
 import { 
   Directive, 
   ElementRef, 
@@ -14,9 +13,8 @@ import {
 })
 
 export class BackgroundDirective implements OnInit {
-  // Значение директивы appBackground попадёт в переменную hoverColor
-  @Input('appBackground') hoverColor; // по умолчанию будет зелёный цвет
-  @Input() defaultColor: string = 'transparent'; // по умолчанию будет прозрачный цвет
+  @Input('appBackground') hoverColor: string = 'green';
+  @Input() defaultColor: string = 'transparent';
   @HostBinding('style.backgroundColor') background: string;
   @HostBinding('class') classStyle: string;
 

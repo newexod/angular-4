@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   headerText = 'Создание своей директивы, которая меняет background-color';
+  numbers = [1, 2, 3, 4, 5];
+  current = 1;
+
+  onClick(number: number) {
+    this.current = number;
+  }
 }
