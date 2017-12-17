@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +17,10 @@ export class AppComponent {
     {name: 'Mercedes', description: 'WFW 5'},
     {name: 'BMW', description: 'WFW 6'},
   ];
+
+  // Через 3 секунды asyncTitle станет строкой Async title 3 seconds
+  asyncTitle = Observable.of('Async title 3 seconds')
+    .delay(3000);
 
   addCar() {
     this.cars.push({
