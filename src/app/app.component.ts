@@ -1,6 +1,9 @@
+/*
+  Сервис - это централизованное хранилище или класс, через который можно общаться компонентам
+  или через которые можно выносить туда общие методы и вызывать их в разных местах
+  Грубо говоря - это маленькая библиотека
+*/
 import { Component } from '@angular/core';
-import 'rxjs/Rx';
-import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-root',
@@ -8,24 +11,25 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  searchCar = '';
   cars = [
-    {name: 'Ford', description: 'WFW 1'},
-    {name: 'Mazda', description: 'WFW 2'},
-    {name: 'Bently', description: 'WFW 3'},
-    {name: 'Audi', description: 'WFW 4'},
-    {name: 'Mercedes', description: 'WFW 5'},
-    {name: 'BMW', description: 'WFW 6'},
+    {
+      name: 'Ford', 
+      isSold: false
+    },
+    {
+      name: 'Mazda', 
+      isSold: true
+    },
+    {
+      name: 'Bently',
+      isSold: false      
+    }
   ];
 
-  // Через 3 секунды asyncTitle станет строкой Async title 3 seconds
-  asyncTitle = Observable.of('Async title 3 seconds')
-    .delay(3000);
-
-  addCar() {
+  addCarToList(carName: string) {
     this.cars.push({
-      name: 'New Car',
-      description: 'WFM'
-    })
+      name: carName,
+      isSold: false
+    });
   }
 }
