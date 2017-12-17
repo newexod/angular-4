@@ -1,21 +1,65 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-8 col-xs-offset-2">
-      <h3 [appBackground]="'red'" [defaultColor]="'blue'">{{ headerText }}</h3>
+<div class="col-xs-8 col-xs-offset-2">
+  <a href="https://angular.io/api?query=pipe">Список всех пайпов</a>
+  <h1>Строковые пайпы</h1>
+  <p>{{ name }}</p>
+  <p>{{ name | lowercase }}</p>
+  <p>{{ name | uppercase }}</p>
+  <!-- 
+    Обрезать строку:
+    с какого символа обрезать строку
+    до какого символа стоит обрезать
+  -->
+  <p>{{ name | slice:0:4 }}</p>
+  <p>{{ name | slice:5:12 | uppercase }}</p>
+  
+  <hr>
 
-      <ul class="list-group">
-        <li *ngFor="let number of numbers" (click)="onClick(number)" class="list-group-item">
-          {{ number }}
-        </li>
-      </ul>
+  <h1>Числовые пайпы</h1>
+  <p>{{ pi }}</p>
+  <p>{{ pi | number }}</p>
+  <!-- 
+    Количество цифр, которое нужно оставить перед запятой (1 цифра)
+    ТОЧКА
+    Количество цифр после запятой, которое необходимо оставить в диапазоне (от 3 до 4 цифр)
+  -->
+  <p>{{ pi | number:'1.3-4' }}</p>
+  <!-- 
+    2 цифры до запятой 
+    2 цифры после запятой
+  -->
+  <p>{{ pi | number:'2.2-2' }}</p>
 
-      <!-- [ngSwitch] следит за изменениями переменной current -->
-      <div [ngSwitch]="current">
-        <p *ngSwitchCase="1">1</p>
-        <p *ngSwitchCase="2">2</p>
-        <p *ngSwitchCase="3">3</p>
-        <p *ngSwitchDefault>default</p>
-      </div>
-    </div>
-  </div>
+  <hr>
+
+  <h1>Пайп вывод валюты</h1>
+  <!-- 
+    currency:
+    'Тип валюты'
+    ДВОЕТОЧИЕ
+    true - выводит знак валюты / false - аббревиатура валюты
+   -->
+  <p>{{ money | currency:'EUR': true }}</p>
+
+  <hr>
+
+  <h1>Пайп вывода даты</h1>
+  <p>{{ date }}</p>
+  <p>{{ date | date }}</p>
+  <!-- Формат даты -->
+  <p>{{ date | date:'fullDate' }}</p>
+  <p>{{ date | date:'shortDate' }}</p>
+  <p>{{ date | date:'shortTime' }}</p>
+  
+  <hr>
+
+  <h1>Пайп преобразования числа в проценты</h1>
+  <p>{{ amount }}</p>
+  <p>{{ amount | percent }}</p>
+
+  <hr>
+
+  <h1>Пайп для дебаггинга</h1>
+  <p>{{ object }}</p>
+  <h2>{{ object | json }}</h2>  
+  <h2><pre>{{ object | json }}</pre></h2>
 </div>
