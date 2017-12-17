@@ -1,4 +1,3 @@
-// ng g p pow
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({

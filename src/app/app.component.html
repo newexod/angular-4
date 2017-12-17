@@ -1,7 +1,18 @@
 <div class="col-xs-8 col-xs-offset-2">
-  <h2>{{ num }}</h2>
-  <h2>{{ num | appPow:5 }}</h2>
-  <h2>{{ num | appPow }}</h2>
-  <h2>{{ 6 | appPow:2 }}</h2>
-  <h2>{{ num | appPow:2:'=' }}</h2>
+  <input type="text" class="form-control" [(ngModel)]="searchCar">
+
+  <hr>
+
+  <ul class="list-group">
+    <!-- 
+      carFilter:searchCar:'name' - фильтрация по name
+      carFilter:searchCar:'description' - фильтрация по description
+     -->
+    <li 
+      class="list-group-item"
+      *ngFor="let car of cars | carFilter:searchCar:'name'; let i = index"
+    >
+      <b>{{ i + 1}}</b> {{ car.name }} <i>{{ car.description }}</i>
+    </li>
+  </ul>
 </div>
