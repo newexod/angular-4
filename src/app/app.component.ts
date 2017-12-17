@@ -13,11 +13,8 @@ export class AppComponent implements OnInit {
   
   constructor(private carsService: CarsService) {}
 
-  /*
-    В момент, когда компонент проинициализируется 
-  */
   ngOnInit() {
-    this.cars = this.carsService.cars; // в this.cars будет храниться массив cars из cars.service.ts
+    this.cars = this.carsService.cars;
     console.log(this.cars)
   }
 }

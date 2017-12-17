@@ -1,5 +1,11 @@
-// Основное предназначение сервиса - это хранение данных и передавать их различным компонентам
+import { ConsoleService } from "./console.service";
+import { Injectable } from "@angular/core";
+
+@Injectable() // класс(СЕРВИС) CarsService становится типа Injectable и соответственно к нему можно импортировать различные сущности (СЕРВИС ConsoleService)
 export class CarsService {
+
+  constructor(private consoleService: ConsoleService) {}
+
   cars = [
     {
       name: 'Ford', 
@@ -20,5 +26,6 @@ export class CarsService {
       isSold: false,
       name // сокращенная запись от name: name
     });
+    this.consoleService.log(`Машина ${name} была добавлена!`);
   }
 }
