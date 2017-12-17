@@ -6,13 +6,12 @@ import { ConsoleService } from '../console.service';
   selector: 'app-car',
   templateUrl: './car.component.html',
   styleUrls: ['./car.component.css'],
-  providers: [ConsoleService] // провайдером для данного компонента будет ConsoleService
+  providers: [ConsoleService]
 })
 export class CarComponent {
 
   @Input() car;
 
-  // создание приватной переменной consoleService, которая будет являться экземпляром класса ConsoleService
   constructor(private consoleService: ConsoleService) {}
   
   getClass() {

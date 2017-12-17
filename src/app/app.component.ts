@@ -1,30 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
+import { CarsService } from './cars.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  cars = [
-    {
-      name: 'Ford', 
-      isSold: false
-    },
-    {
-      name: 'Mazda', 
-      isSold: true
-    },
-    {
-      name: 'Bently',
-      isSold: false      
-    }
-  ];
+export class AppComponent implements OnInit {
 
-  addCarToList(carName: string) {
-    this.cars.push({
-      name: carName,
-      isSold: false
-    });
+  cars = [];
+  
+  constructor(private carsService: CarsService) {}
+
+  /*
+    В момент, когда компонент проинициализируется 
+  */
+  ngOnInit() {
+    this.cars = this.carsService.cars; // в this.cars будет храниться массив cars из cars.service.ts
+    console.log(this.cars)
   }
 }
