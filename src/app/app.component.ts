@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -6,6 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  // TD - Template Driven подход используется, когда валидация проходит внутри шаблона, а в компоненте прилагаем минимум усилий
   answers = [
     {
       type: 'Yes',
@@ -16,5 +18,9 @@ export class AppComponent {
       text: 'Нет'
     }
   ];
+
+  submitForm(form: NgForm) {
+    console.log('wow', form);
+  }
   
 }
