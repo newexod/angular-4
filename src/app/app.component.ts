@@ -19,8 +19,11 @@ export class AppComponent {
     }
   ];
 
+  defaultAnswer = 'No';
+  defaultCountry = 'ru';
+
   submitForm(form: NgForm) {
     console.log('wow', form);
   }
-  
+
 }
