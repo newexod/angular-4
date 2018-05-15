@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CarsService } from './cars.service';
 
 @Component({
   selector: 'app-root',
@@ -7,12 +8,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  cars = [
-    {
-      name: 'Ford',
-      color: 'white',
-      id: 1
-    }
-  ];
+  cars = [];
 
+  constructor(private carsService: CarsService) {}
+
+  loadCars() {
+    this.carsService
+      .getCars()
+      .subscribe((response) => {
+        console.log(response)
+      });
+  }
 }
