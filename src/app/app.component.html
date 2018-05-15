@@ -1,6 +1,6 @@
 <div class="col-xs-8 col-xs-offset-2">
   <form (ngSubmit)="submitForm(form)" #form="ngForm">
-    <div class="form-group">
+    <div class="form-group" [ngClass]="{'has-error': email.invalid && email.touched}">
       <label>Email</label>
       <input 
         type="text" 
@@ -9,10 +9,12 @@
         name="email"
         required
         email
+        #email="ngModel"
       >
+      <p *ngIf="email.invalid && email.touched">Введите корректный email</p>
     </div>
 
-    <div class="form-group">
+    <div class="form-group" [ngClass]="{'has-error': pass.invalid && pass.touched}">
       <label>Password</label>
       <input 
         type="password" 
@@ -20,7 +22,9 @@
         ngModel
         name="pass"
         required
+        #pass="ngModel"
       >
+      <p *ngIf="pass.invalid && pass.touched">Пароль не должен быть пустым</p>
     </div>
 
     <div class="form-group">
