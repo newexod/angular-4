@@ -1,30 +1,33 @@
 <div class="col-xs-8 col-xs-offset-2">
   <form (ngSubmit)="submitForm(form)" #form="ngForm">
-    <div class="form-group" [ngClass]="{'has-error': email.invalid && email.touched}">
-      <label>Email</label>
-      <input 
-        type="text" 
-        class="form-control"
-        ngModel
-        name="email"
-        required
-        email
-        #email="ngModel"
-      >
-      <p *ngIf="email.invalid && email.touched">Введите корректный email</p>
-    </div>
-
-    <div class="form-group" [ngClass]="{'has-error': pass.invalid && pass.touched}">
-      <label>Password</label>
-      <input 
-        type="password" 
-        class="form-control"
-        ngModel
-        name="pass"
-        required
-        #pass="ngModel"
-      >
-      <p *ngIf="pass.invalid && pass.touched">Пароль не должен быть пустым</p>
+    <div ngModelGroup="user" #user="ngModelGroup">
+      <div class="form-group" [ngClass]="{'has-error': email.invalid && email.touched}">
+        <label>Email</label>
+        <input 
+          type="text" 
+          class="form-control"
+          ngModel
+          name="email"
+          required
+          email
+          #email="ngModel"
+        >
+        <p *ngIf="email.invalid && email.touched">Введите корректный email</p>
+      </div>
+  
+      <div class="form-group" [ngClass]="{'has-error': pass.invalid && pass.touched}">
+        <label>Password</label>
+        <input 
+          type="password" 
+          class="form-control"
+          ngModel
+          name="pass"
+          required
+          #pass="ngModel"
+        >
+        <p *ngIf="pass.invalid && pass.touched">Пароль не должен быть пустым</p>
+      </div>
+      <p *ngIf="user.invalid && user.touched">Данные пользователя введены некорректно!</p>
     </div>
 
     <div class="form-group">
