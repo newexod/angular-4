@@ -1,16 +1,18 @@
 <div class="col-xs-8 col-xs-offset-2">
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
-    <div class="form-group" [ngClass]="{'has-error': form.get('email').invalid && form.get('email').touched}">
-      <label>Email</label>
-      <input type="text" class="form-control" formControlName="email">
-      <p *ngIf="form.get('email').invalid && form.get('email').touched">Введите корректный email</p>      
-    </div>
-
-    <div class="form-group" [ngClass]="{'has-error': form.get('pass').invalid && form.get('pass').touched}">
-      <label>Password</label>
-      <input type="password" class="form-control" formControlName="pass">
-      <p *ngIf="form.get('pass').invalid && form.get('pass').touched">Пароль не должен быть пустым!</p>
+    <div formGroupName="user">
+      <div class="form-group" [ngClass]="{'has-error': form.get('user.email').invalid && form.get('user.email').touched}">
+        <label>Email</label>
+        <input type="text" class="form-control" formControlName="email">
+        <p *ngIf="form.get('user.email').invalid && form.get('user.email').touched">Введите корректный email</p>      
+      </div>
+  
+      <div class="form-group" [ngClass]="{'has-error': form.get('user.pass').invalid && form.get('user.pass').touched}">
+        <label>Password</label>
+        <input type="password" class="form-control" formControlName="pass">
+        <p *ngIf="form.get('user.pass').invalid && form.get('user.pass').touched">Пароль не должен быть пустым!</p>
+      </div>
     </div>
 
     <div class="form-group">
