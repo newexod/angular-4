@@ -2,12 +2,12 @@
   "cars": [
     {
       "name": "Ford",
-      "color": "white",
+      "color": "green",
       "id": 1
     },
     {
       "name": "BMW",
-      "color": "blue",
+      "color": "green",
       "id": 2
     },
     {
@@ -19,6 +19,11 @@
       "name": "Lada",
       "color": "blue",
       "id": 4
+    },
+    {
+      "name": "Bently",
+      "color": "pink",
+      "id": 5
     }
   ]
 }

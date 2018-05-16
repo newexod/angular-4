@@ -17,6 +17,7 @@ export class AppComponent {
 
   cars: Cars[] = [];
   carName: string = '';
+  colors = ['red', 'blue', 'green', 'pink', 'yellow', 'grey'];
 
   constructor(private carsService: CarsService) {}
 
@@ -35,5 +36,17 @@ export class AppComponent {
         this.cars.push(car);
       });
     this.carName = '';
+  }
+
+  getRandomColor() {
+    const num = Math.round(Math.random() * (this.colors.length - 1));
+    return this.colors[num];
+  }
+
+  setNewColor(car: Cars) {
+    this.carsService.changeColor(car, this.getRandomColor())
+      .subscribe((data) => {
+        console.log(data)
+      });
   }
 }
