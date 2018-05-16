@@ -24,9 +24,14 @@ export class AppComponent {
   loadCars() {
     this.carsService
       .getCars()
-      .subscribe((cars: Cars[]) => {
-        this.cars = cars;
-      });
+      .subscribe(
+        (cars: Cars[]) => {
+          this.cars = cars;
+        },
+        (error) => {
+          alert(error);
+        }
+      );
   }
 
   addCar() {
