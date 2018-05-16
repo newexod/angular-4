@@ -1,12 +1,18 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, Response, Headers } from '@angular/http';
 
 @Injectable()
 export class CarsService {
   constructor(private http: Http) {}
 
   getCars() {
-    return this.http.get('http://localhost:3000/cars')
+    const headers = new Headers({
+      'Content-Type': 'application/json; charset=utf8'
+    });
+
+    return this.http.get('http://localhost:3000/cars', {
+      headers: headers
+    })
       .map((response: Response) => {
         return response.json();
       });
@@ -18,7 +24,13 @@ export class CarsService {
       color: 'blue'
     };
 
-    return this.http.post('http://localhost:3000/cars', data)
+    const headers = new Headers({
+      'Content-Type': 'application/json; charset=utf8'
+    });
+
+    return this.http.post('http://localhost:3000/cars', data, {
+      headers: headers
+    })
       .map((response: Response) => {
         return response.json();
       });
