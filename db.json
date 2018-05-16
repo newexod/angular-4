@@ -6,11 +6,6 @@
       "id": 1
     },
     {
-      "name": "BMW",
-      "color": "green",
-      "id": 2
-    },
-    {
       "name": "Audi",
       "color": "blue",
       "id": 3
@@ -21,8 +16,8 @@
       "id": 4
     },
     {
-      "name": "Bently",
-      "color": "pink",
+      "name": "Mercedes",
+      "color": "blue",
       "id": 5
     }
   ]
