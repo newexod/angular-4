@@ -7,8 +7,9 @@ import { CarPageComponent } from './car-page/car-page.component';
 
 
 const appRoutes: Routes = [
-  { path: 'cars', component: CarsPageComponent },
-  { path: 'cars/:id/:name', component: CarPageComponent }, // localhost:4200/cars/3/Audi
+  { path: 'cars', component: CarsPageComponent, children: [ // массив дочерних роутов (компонентов) для компонента CarsPageComponent
+    { path: ':id/:name', component: CarPageComponent },
+  ] },
   { path: '', component: HomePageComponent }
 ];
 
