@@ -4,32 +4,30 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './home-page/home-page.component';
-import { CarsPageComponent } from './cars-page/cars-page.component';
-import { CarPageComponent } from './cars-page/car-page/car-page.component';
 import { HeaderComponent } from './header/header.component';
-
-import { CarsService } from './cars.service';
 
 import { AppRoutingModule } from './app-routing.module';
 
 import { ColorDirective } from './shared/color.directive';
 
+import { CarsModule } from './cars-page/cars.module';
 
+
+// Модуль === NgModule - это сущность, которая объединяет в себе все другие сущности
 @NgModule({
-  declarations: [
+  declarations: [ // может хранить пайпы, компоненты, директивы
     AppComponent,
-    CarsPageComponent,
     HomePageComponent,
-    CarPageComponent,
     HeaderComponent,
     ColorDirective
   ],
-  imports: [
-    BrowserModule,
+  imports: [ // то, что модуль должен в себя импортировать, те модули, которые ему нужны для работы  
+    BrowserModule, // модуль, который предоставляет фичи, которые работают в браузере
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CarsModule
   ],
-  providers: [CarsService],
-  bootstrap: [AppComponent]
+  providers: [], // массив, где регистрируем сервисы
+  bootstrap: [AppComponent] // то, что необходимо запустить при старте приложения
 })
 export class AppModule { }
