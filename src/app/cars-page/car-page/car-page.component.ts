@@ -13,7 +13,7 @@ export class CarPageComponent implements OnInit {
   color: string;
   hash: string;
 
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.id = +this.route.snapshot.params['id'];
@@ -32,16 +32,6 @@ export class CarPageComponent implements OnInit {
     this.route.queryParams.subscribe((params: Params) => {
       this.year = params['year'];
       this.color = params['color'];
-    });
-  }
-
-  openMazdaPage() {
-    this.router.navigate(['./cars', 8, 'Mazda'], {
-      queryParams: {
-        color: 'pink',
-        year: 1995
-      },
-      fragment: 'pic'
     });
   }
 
