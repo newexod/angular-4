@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-car-page',
@@ -9,22 +9,39 @@ import { ActivatedRoute, Params } from '@angular/router';
 export class CarPageComponent implements OnInit {
   id: number;
   name: string;
+  year: string;
+  color: string;
+  hash: string;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private router: Router) { }
 
-  // 2 способа взятия информации и в зависимости от этого отобразить нужную машину
   ngOnInit() {
-    // 1 способ -ы относится к роутам. Передаём id и name машины в адресной строке
-    // snapshot - обращение к адресной строке
-    // params - объект, в котором хранятся все элементы, которые прописаны в адресной строке
     this.id = +this.route.snapshot.params['id'];
     this.name = this.route.snapshot.params['name'];
+    this.year = this.route.snapshot.queryParams['year'];
+    this.color = this.route.snapshot.queryParams['color'];
+    this.hash = this.route.snapshot.fragment;
 
 
-    // 2 способ - наследник класса Observable, на который можно подписаться
     this.route.params.subscribe((params: Params) => {
       this.id = +params['id'];
       this.name = params['name'];
+    });
+
+
+    this.route.queryParams.subscribe((params: Params) => {
+      this.year = params['year'];
+      this.color = params['color'];
+    });
+  }
+
+  openMazdaPage() {
+    this.router.navigate(['./cars', 8, 'Mazda'], {
+      queryParams: {
+        color: 'pink',
+        year: 1995
+      },
+      fragment: 'pic'
     });
   }
 
