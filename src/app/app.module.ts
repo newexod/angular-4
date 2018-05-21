@@ -8,6 +8,12 @@ import { HomePageComponent } from './home-page/home-page.component';
 
 import { CarsService } from './cars.service';
 
+import { Routes, RouterModule } from '@angular/router';
+
+const appRoutes: Routes = [
+  { path: 'cars', component: CarsPageComponent },
+  { path: '', component: HomePageComponent }
+];
 
 @NgModule({
   declarations: [
@@ -17,7 +23,8 @@ import { CarsService } from './cars.service';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [CarsService],
   bootstrap: [AppComponent]
