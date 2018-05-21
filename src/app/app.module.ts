@@ -8,7 +8,6 @@ import { HeaderComponent } from './header/header.component';
 
 import { AppRoutingModule } from './app-routing.module';
 
-import { CarsModule } from './cars-page/cars.module';
 import { SharedModule } from './shared/shared.module';
 
 
@@ -23,7 +22,6 @@ import { SharedModule } from './shared/shared.module';
     BrowserModule, // модуль, который предоставляет фичи, которые работают в браузере
     FormsModule,
     AppRoutingModule,
-    CarsModule,
     SharedModule    
   ],
   providers: [], // массив, где регистрируем сервисы

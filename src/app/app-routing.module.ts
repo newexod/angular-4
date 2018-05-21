@@ -5,7 +5,9 @@ import { HomePageComponent } from './home-page/home-page.component';
 
 
 const appRoutes: Routes = [
-  { path: '', component: HomePageComponent }
+  { path: '', component: HomePageComponent },
+  { path: 'cars', loadChildren: './cars-page/cars.module#CarsModule' } // Если был переход на роут CarsPageComponent, то загрузить CarsModule
+  // Если необходимо загружать Guard с ленивой загрузкой, то используется canLoad: [] вместо canActivate: []
 ];
 
 @NgModule({
