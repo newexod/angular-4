@@ -2,8 +2,12 @@
 
 <hr>
 
+<!-- (@divTrigger.start) - слушать начало анимации -->
+<!-- (@divTrigger.done) - слушать конец анимации -->
 <div 
   @divTrigger
+  (@divTrigger.start)="onAnimationStart($event)"
+  (@divTrigger.done)="onAnimationDone($event)"
   class="alert alert-danger"
   *ngIf="isVisible"
 >
