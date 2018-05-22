@@ -2,10 +2,17 @@
 
 <hr>
 
-<div 
-  [@divTrigger]="'show'"
+<!-- <div 
+  @divTrigger
   class="alert alert-danger"
   *ngIf="isVisible"
 >
   Lorem ipsum dolor sit amet.
-</div>
+</div> -->
+
+<hr>
+
+<div 
+  [@changeWidth]="isVisible ? 'a' : 'b'"
+  style="height: 250px; width: 200px; background-color: red"
+></div>
