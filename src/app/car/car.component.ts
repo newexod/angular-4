@@ -15,6 +15,7 @@ export class CarComponent implements OnInit {
 
   ngOnInit() {
     this.isCarVisible = this.carService.getVisibility();
+    console.log(this.isCarVisible)
   }
 
 }
